@@ -1,0 +1,6 @@
+[default]
+debug = true
+SCHEDULER_API_ENABLED = true
+
+[prod]
+debug = false

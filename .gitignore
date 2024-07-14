@@ -1,0 +1,7 @@
+CIS_bdpm.json
+CIS_CIP_bdpm.json
+CIS_COMPO_bdpm.json
+CIS_CPD_bdpm.json
+CIS_GENER_bdpm.json
+.env
+__pycache__
