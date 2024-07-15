@@ -40,7 +40,7 @@ def create_app(_settings: Optional[Dynaconf] = None) -> Flask:
     # Init dynaconf
     FlaskDynaconf(flask, dynaconf_instance=_settings)
 
-    flask.add_url_rule("/ping", "ping", lambda: ("", 200))
+    flask.add_url_rule("/ping", "ping", lambda: ("pong", 200))
 
     return flask
 

@@ -1,3 +1,9 @@
+from models.compositions import Compositions
+from models.generic_groups import GenericGroups
+from models.prescriptions import Prescriptions
+from models.presentations import Presentations
+
+
 class Medicament(object):
     cis: int
     denomination: str
@@ -11,6 +17,12 @@ class Medicament(object):
     numero_autorisation_europeenne: str
     titulaires: str
     surveillance_renforcee: bool
+
+    # Aggregated properties
+    presentations: [Presentations] = None
+    compositions: [Compositions] = None
+    prescriptions: [Prescriptions] = None
+    generic_groups: [GenericGroups] = None
 
     def __init__(
             self, cis: int, denomination: str, forme_pharmaceutique: str, voies_administration: str,

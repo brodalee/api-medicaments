@@ -30,7 +30,7 @@ class PresentationDataframe(object):
 
         return None
 
-    def search_by_cis(self, cis: str) -> [Presentations]:
+    def search_by_cis(self, cis: int) -> [Presentations]:
         return self._query("cis == {0}".format(cis))
 
     def _query(self, query: str) -> [Presentations]:

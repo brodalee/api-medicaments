@@ -18,7 +18,6 @@ class PrescriptionDataframe(object):
         ).reset_index(drop=True)
 
     def search_by_cis(self, cis: int):
-        print("SIZE :: ", self._dataframe.size)
         return self._query("cis == {0}".format(cis))
 
     def _query(self, query: str) -> [Prescriptions]:
