@@ -73,8 +73,8 @@ class MedicamentsController(object):
     def all(self) -> Response:
         # TODO : pagination
         args = request.args
-        limit = args.get('limit', 50)
-        page = args.get('page', 0)
+        limit = int(args.get('limit', 50))
+        page = int(args.get('page', 1))
         if limit > 100:
             limit = 50
 

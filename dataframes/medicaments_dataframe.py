@@ -1,3 +1,5 @@
+from typing import Iterable
+
 import pandas
 from pandas import DataFrame
 from models.medicaments import Medicament
@@ -18,8 +20,11 @@ class MedicamentDataframe(object):
         ).reset_index(drop=True)
 
     def fetch_medicaments_paginated(self, limit: int, page: int) -> [Medicament]:
-        # TODO faire la pagination.
-        return self._query("cis != ''")
+        start_idx = (page - 1) * limit
+        end_idx = start_idx + limit
+
+        rows = self._dataframe.sort_values('cis', ascending=False).iloc[start_idx:end_idx]
+        return self._create_from_row(rows.iterrows())
 
     def total_count(self) -> int:
         return self._dataframe.size
@@ -37,8 +42,11 @@ class MedicamentDataframe(object):
 
     def _query(self, query: str) -> [Medicament]:
         rows = self._dataframe.query(query, engine="python")
+        return self._create_from_row(rows.iterrows())
+
+    def _create_from_row(self, rows: Iterable) -> [Medicament]:
         results = []
-        for _, row in rows.iterrows():
+        for _, row in rows:
             med = Medicament(
                 cis=row['cis'],
                 denomination=row['denomination'],
