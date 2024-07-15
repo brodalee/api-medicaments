@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class GenericGroups(object):
     identifier: int
     libelle: str

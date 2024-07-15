@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class Presentations(object):
     cis: int
     cip7: int

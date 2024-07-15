@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class Compositions(object):
     cis: int
     designation_pharmaceutique: str

@@ -2,8 +2,10 @@ from models.compositions import Compositions
 from models.generic_groups import GenericGroups
 from models.prescriptions import Prescriptions
 from models.presentations import Presentations
+from dataclasses import dataclass
 
 
+@dataclass
 class Medicament(object):
     cis: int
     denomination: str
