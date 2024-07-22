@@ -1,0 +1,524 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Médicaments REST API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/medicaments": {
+      "get": {
+        "tags": [
+          "Medicaments"
+        ],
+        "description": "Fetch medicaments paginated",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch medicaments paginated",
+            "schema": {
+              "$ref": "#/definitions/PaginatedMedicamentsDTO"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "withPresentations",
+            "type": "string",
+            "description": "Get medicament presentations. Any value is accepted or just add ?withPresentation in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "withCompositions",
+            "type": "string",
+            "description": "Get medicament compositions. Any value is accepted or just add ?withCompositions in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "withPrescriptions",
+            "type": "string",
+            "description": "Get medicament prescriptions. Any value is accepted or just add ?withPrescriptions in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "withGenericGroups",
+            "type": "string",
+            "description": "Get medicament generic groups. Any value is accepted or just add ?withGenericGroups in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "description": "Current page",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "type": "integer",
+            "description": "Number of retrived elements.",
+            "in": "query",
+            "required": false
+          }
+        ]
+      }
+    },
+    "/medicaments/by-cis": {
+      "get": {
+        "tags": [
+          "Medicaments"
+        ],
+        "description": "Fetch medicament by CIS",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch medicaments by CIS",
+            "schema": {
+              "$ref": "#/definitions/MedicamentDTO"
+            }
+          },
+          "404": {
+            "description": "Medicament with CIS not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorDTO"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "withPresentations",
+            "type": "string",
+            "description": "Get medicament presentations. Any value is accepted or just add ?withPresentation in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "withCompositions",
+            "type": "string",
+            "description": "Get medicament compositions. Any value is accepted or just add ?withCompositions in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "withPrescriptions",
+            "type": "string",
+            "description": "Get medicament prescriptions. Any value is accepted or just add ?withPrescriptions in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "withGenericGroups",
+            "type": "string",
+            "description": "Get medicament generic groups. Any value is accepted or just add ?withGenericGroups in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "search",
+            "type": "integer",
+            "description": "The searched CIS of the medicament",
+            "in": "query",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/medicaments/by-name": {
+      "get": {
+        "tags": [
+          "Medicaments"
+        ],
+        "description": "Fetch medicaments by name like",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch medicaments by name like",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MedicamentDTO"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "withPresentations",
+            "type": "string",
+            "description": "Get medicament presentations. Any value is accepted or just add ?withPresentation in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "withCompositions",
+            "type": "string",
+            "description": "Get medicament compositions. Any value is accepted or just add ?withCompositions in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "withPrescriptions",
+            "type": "string",
+            "description": "Get medicament prescriptions. Any value is accepted or just add ?withPrescriptions in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "withGenericGroups",
+            "type": "string",
+            "description": "Get medicament generic groups. Any value is accepted or just add ?withGenericGroups in url",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "search",
+            "type": "string",
+            "description": "The searched name of some medicaments",
+            "in": "query",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/prescriptions/by-cis": {
+      "get": {
+        "tags": [
+          "Prescriptions"
+        ],
+        "description": "Fetch prescription by CIS",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch prescription by CIS",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PrescriptionDTO"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "type": "string",
+            "description": "The searched cis of prescriptions",
+            "in": "query",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/presentations/by-cis": {
+      "get": {
+        "tags": [
+          "Presentations"
+        ],
+        "description": "Fetch presentations by CIS",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch presentations by CIS",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PresentationDTO"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "type": "string",
+            "description": "The searched cis of presentations",
+            "in": "query",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/compositions/by-cis": {
+      "get": {
+        "tags": [
+          "Compositions"
+        ],
+        "description": "Fetch compositions by CIS",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch compositions by CIS",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CompositionDTO"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "type": "string",
+            "description": "The searched cis of compositions",
+            "in": "query",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/generic-groups/by-cis": {
+      "get": {
+        "tags": [
+          "GenericGroups"
+        ],
+        "description": "Fetch generic groups by CIS",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch generic groups by CIS",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GenericGroupDTO"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "type": "string",
+            "description": "The searched cis of generic groups",
+            "in": "query",
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "MedicamentDTO": {
+      "type": "object",
+      "properties": {
+        "cis": {
+          "type": "integer"
+        },
+        "date_AMM": {
+          "type": "string"
+        },
+        "denomination": {
+          "type": "string"
+        },
+        "etat_commercialisation": {
+          "type": "string"
+        },
+        "forme_pharmaceutique": {
+          "type": "string"
+        },
+        "numero_autorisation_europeenne": {
+          "type": "string"
+        },
+        "statut_BDM": {
+          "type": "string"
+        },
+        "statut_admin_AMM": {
+          "type": "string"
+        },
+        "surveillance_renforcee": {
+          "type": "string"
+        },
+        "titulaires": {
+          "type": "string"
+        },
+        "type_procedure_AMM": {
+          "type": "string"
+        },
+        "voies_administration": {
+          "type": "string"
+        },
+        "generic_groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GenericGroupDTO"
+          }
+        },
+        "presentations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PresentationDTO"
+          }
+        },
+        "compositions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CompositionDTO"
+          }
+        },
+        "prescriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrescriptionDTO"
+          }
+        }
+      }
+    },
+    "GenericGroupDTO": {
+      "type": "object",
+      "properties": {
+        "cis": {
+          "type": "integer"
+        },
+        "generic_type": {
+          "type": "integer"
+        },
+        "identifier": {
+          "type": "integer"
+        },
+        "libelle": {
+          "type": "string"
+        },
+        "generic_type_libelle": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      }
+    },
+    "PresentationDTO": {
+      "type": "object",
+      "properties": {
+        "cis": {
+          "type": "integer"
+        },
+        "agrement_collectivites": {
+          "type": "boolean"
+        },
+        "cip13": {
+          "type": "integer"
+        },
+        "cip7": {
+          "type": "integer"
+        },
+        "date_declaration_commercialisation": {
+          "type": "string"
+        },
+        "etat_commercialisation": {
+          "type": "string"
+        },
+        "honoraires": {
+          "type": "string"
+        },
+        "indications_remboursement": {
+          "type": "string"
+        },
+        "libelle": {
+          "type": "string"
+        },
+        "prix_avec_honoraires": {
+          "type": "string"
+        },
+        "prix_sans_honoraires": {
+          "type": "string"
+        },
+        "statut_admin": {
+          "type": "string"
+        },
+        "taux_remboursement": {
+          "type": "string"
+        }
+      }
+    },
+    "CompositionDTO": {
+      "type": "object",
+      "properties": {
+        "cis": {
+          "type": "integer"
+        },
+        "code": {
+          "type": "integer"
+        },
+        "denomination": {
+          "type": "string"
+        },
+        "designation_pharmaceutique": {
+          "type": "string"
+        },
+        "dosage": {
+          "type": "string"
+        },
+        "dosage_reference": {
+          "type": "string"
+        },
+        "nature": {
+          "type": "string"
+        }
+      }
+    },
+    "PrescriptionDTO": {
+      "type": "object",
+      "properties": {
+        "cis": {
+          "type": "integer"
+        },
+        "condition": {
+          "type": "string"
+        }
+      }
+    },
+    "PaginatedMedicamentsDTO": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedicamentDTO"
+          }
+        },
+        "next": {
+          "type": "integer"
+        },
+        "previous": {
+          "type": "integer"
+        },
+        "totalCount": {
+          "type": "integer"
+        },
+        "totalPage": {
+          "type": "integer"
+        }
+      }
+    },
+    "ErrorDTO": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

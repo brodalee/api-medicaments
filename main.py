@@ -14,6 +14,7 @@ from models.medicaments import Medicament
 from models.prescriptions import Prescriptions
 from models.presentations import Presentations
 from dataframes.dataframes import Dataframes
+from flask_swagger_ui import get_swaggerui_blueprint
 import threading
 
 
@@ -65,7 +66,6 @@ def update_data_in_background():
     thread.start()
 
 
-# update_data(dataframes)  # pour avoir des données dès le lancement de l'application.
 scheduler.start()
 update_data_in_background()
 
@@ -76,13 +76,18 @@ def render_http_exception(error):
 
     resp = {
         "error": {
-            "status": error.name,
-            "code": error.code,
             "message": error.description,
         }
     }
 
     return jsonify(resp), error.code
+
+
+swagger_ui_blueprint = get_swaggerui_blueprint(
+    "/swagger",
+    "/static/doc.json"
+)
+flask_app.register_blueprint(swagger_ui_blueprint, url_prefix="/swagger")
 
 
 if __name__ == "__main__":

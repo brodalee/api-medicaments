@@ -9,7 +9,7 @@ file_path = "./.cache/CIS_COMPO_bdpm.json"
 
 
 def has_cache() -> bool:
-    if os.environ.get("FLASK_ENV") == "dev" and os.path.isfile(file_path):
+    if os.path.isfile(file_path):
         return True
 
     return False
@@ -54,6 +54,7 @@ def update_compositions(dataframes: Dataframes):
     print("Handling compositions ...")
     if has_cache():
         get_cache(dataframes)
+        print("Compositions has cache, terminated.")
         return
 
     results = fetch_file()

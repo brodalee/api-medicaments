@@ -1,5 +1,6 @@
 from dataframes.dataframes import Dataframes
 from models.medicaments import Medicament
+from utils import translate_generic_group_type
 from flask import request
 
 
@@ -30,3 +31,5 @@ class MedicamentAggregator(object):
     def _compound_generic_groups(self, medicament: Medicament):
         if request.args.get('withGenericGroups') is not None:
             medicament['generic_groups'] = self._dataframes.generic_groups.search_by_cis(medicament['cis'])
+            for gg in medicament['generic_groups']:
+                gg['generic_type_libelle'] = translate_generic_group_type(gg['generic_type'])

@@ -1,3 +1,5 @@
+import threading
+
 from crons.update_data.update_prescriptions import update_prescriptions
 from crons.update_data.update_compositions import update_compositions
 from crons.update_data.update_generic_groups import update_generic_groups

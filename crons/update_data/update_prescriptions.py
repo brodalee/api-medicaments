@@ -9,7 +9,7 @@ file_path = "./.cache/CIS_CPD_bdpm.json"
 
 
 def has_cache() -> bool:
-    if os.environ.get("FLASK_ENV") == "dev" and os.path.isfile(file_path):
+    if os.path.isfile(file_path):
         return True
 
     return False
@@ -54,6 +54,7 @@ def update_prescriptions(dataframes: Dataframes):
     print("Handling prescriptions ...")
     if has_cache():
         get_cache(dataframes)
+        print("Prescriptions has cache, terminated.")
         return
 
     results = fetch_file()
