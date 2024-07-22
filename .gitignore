@@ -5,3 +5,4 @@ CIS_CPD_bdpm.json
 CIS_GENER_bdpm.json
 .env
 __pycache__
+.idea

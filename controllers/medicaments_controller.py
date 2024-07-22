@@ -1,11 +1,9 @@
-import json.encoder
 import math
 from flask import Response, request, jsonify
 from agregators.medicaments_aggregator import MedicamentAggregator
 from dataframes.dataframes import Dataframes
 from exceptions.bad_request import BadRequest
 from exceptions.not_found import NotFound
-from utils import translate_generic_group_type
 
 
 class MedicamentsController(object):

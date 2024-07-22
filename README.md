@@ -23,7 +23,3 @@ Au démarage du projet, celui-ci va télécharger les fichiers nécéssaires afi
 Cela va générer du cache afin de rendre le prochain lancement plus rapide.
 
 Une tâche cron sera éxécutée toutes les 30 minutes afin de maintenir à jour les données.
-
-
-## Model
- TODO mettre le model
